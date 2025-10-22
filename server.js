@@ -20,10 +20,11 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors({
-  origin: "https://vendasteste357.netlify.app", // permite requisições desse domínio
-  methods: ["GET", "POST"], // métodos permitidos
-  credentials: true // se você estiver usando cookies ou autenticação
+  origin: ["https://vendasteste357.netlify.app", "https://conectavendas.netlify.app"],
+  methods: ["GET", "POST"],
+  credentials: true
 }));
+
 
 // 🌐 Página inicial
 app.get("/", (req, res) => {
