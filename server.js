@@ -19,10 +19,11 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// 🧱 Middlewares
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.resolve(__dirname)));
+app.use(cors({
+  origin: "https://vendasteste357.netlify.app", // permite requisições desse domínio
+  methods: ["GET", "POST"], // métodos permitidos
+  credentials: true // se você estiver usando cookies ou autenticação
+}));
 
 // 🌐 Página inicial
 app.get("/", (req, res) => {
