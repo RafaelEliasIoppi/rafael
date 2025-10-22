@@ -59,7 +59,7 @@ app.post("/chat", async (req, res) => {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // ✅ modelo compatível
     const result = await model.generateContent(message.trim());
     const text = result.response.text();
     res.json({ reply: text });
