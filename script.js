@@ -91,13 +91,13 @@ async function sendMessage() {
   chatBox.scrollTop = chatBox.scrollHeight;
 
   try {
-    const response = await fetch("https://rafael-production.up.railway.app/chat", {
+   const response = await fetch("https://rafael-rafael-chat-api.onrender.com/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        message: `Responda em português de forma clara: ${userMessage}`
-      })
-    });
+    message: `Responda em português de forma clara: ${userMessage}`
+  })
+});
 
     if (!response.ok) {
       throw new Error(`Erro ${response.status}: ${response.statusText}`);
@@ -149,3 +149,4 @@ criarMensagemCompra();
 
 // Repetir a cada 10 segundos
 setInterval(criarMensagemCompra, 10000);
+
