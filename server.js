@@ -19,8 +19,19 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+const allowedOrigins = [
+  "https://vendasteste357.netlify.app",
+  "https://conectavendas.netlify.app"
+];
+
 app.use(cors({
-  origin: ["https://vendasteste357.netlify.app", "https://conectavendas.netlify.app"],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Origem não permitida pelo CORS"));
+    }
+  },
   methods: ["GET", "POST"],
   credentials: true
 }));
