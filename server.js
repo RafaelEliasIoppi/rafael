@@ -19,6 +19,8 @@ const genAI = new GoogleGenerativeAI(apiKey);
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+// 🧱 Middlewares
+app.use(express.json()); // Permite leitura de req.body
 const allowedOrigins = [
   "https://vendasteste357.netlify.app",
   "https://conectavendas.netlify.app"
@@ -35,7 +37,6 @@ app.use(cors({
   methods: ["GET", "POST"],
   credentials: true
 }));
-
 
 // 🌐 Página inicial
 app.get("/", (req, res) => {
@@ -72,5 +73,5 @@ app.post("/chat", async (req, res) => {
 
 // 🟢 Inicializa o servidor
 app.listen(PORT, "0.0.0.0", () => {
-  console.log(`✅ Servidor rodando em https://rafael-production.up.railway.app:${PORT}`);
+  console.log(`✅ Servidor rodando na porta ${PORT}`);
 });
